@@ -1,0 +1,13 @@
+.container {
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items:center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.link {
+    text-decoration: none;
+}
