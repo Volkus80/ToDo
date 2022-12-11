@@ -15,11 +15,15 @@ const todoStates = ['Queue', 'Development', 'Done'];
 export default function TasksPage() {
     const {id} = useParams();
     const dispatch = useDispatch();
-    const todos = useSelector(state => state.data.find(proj => proj.id === id).todos); 
+    const todos = useSelector(state => state.data.find(proj => proj.id === id).todos);
+    console.log(todos); 
     const getLastNumber = () => {
-        const numbers = todos.map(todo => +todo.number);
-        const lastNumber = Math.max(...numbers);
-        return String(lastNumber+1);
+        if (todos.length > 0) {
+            const numbers = todos.map(todo => +todo.number);
+            const lastNumber = Math.max(...numbers);
+            return String(lastNumber+1);
+        }
+        return '1';
     };
     const addNewTodo = () => {
         const newTodo = {
