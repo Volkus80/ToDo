@@ -229,7 +229,14 @@ export const appSlice = createSlice({
         const {id, file} = action.payload;
         const activeTodo = state.find(project => project.id === id).todos.find(todo => todo.active === true);
         activeTodo.files.push(file);
+       },
+       toggleImage (state, action) {
+        const {projID, fileID, imageState} = action.payload;
+        const activeTodo = state.find(project => project.id === projID).todos.find(todo => todo.active === true);
+        const file = activeTodo.files.find(file => file.id === fileID);
+        file.active = imageState;
        }
+
     }
 });
 
@@ -244,5 +251,6 @@ export const {
     changeSubTodos,
     openSubTodo,
     addComment,
-    addFile} = appSlice.actions;
+    addFile,
+    toggleImage} = appSlice.actions;
 export default appSlice.reducer;

@@ -17,6 +17,7 @@ $colorDone: rgb(50, 179, 11);
     flex-direction: column;
     justify-content: center;
     min-width: 250px;
+    max-width: 300px;
     border: solid 2px $colorDone;
     border-radius: 1rem;
     overflow: hidden;
@@ -74,6 +75,7 @@ $colorDone: rgb(50, 179, 11);
     margin-bottom: 10px;
     width: 90%;
     padding: 10px;
+    cursor:grab;
 }
 
 .dr {
@@ -83,8 +85,7 @@ $colorDone: rgb(50, 179, 11);
 .text {
     font-size: 1.5rem;
     text-align: center;
-    margin-right: 10px;  
-    cursor:grab; 
+    margin-right: 10px;   
     color: grey; 
 }
 span {

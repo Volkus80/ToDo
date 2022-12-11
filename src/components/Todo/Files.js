@@ -2,7 +2,7 @@ import s from './Todo.module.scss';
 import uuid from 'react-uuid';
 import { useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addFile } from '../../slice/appSlice';
+import { addFile, toggleImage } from '../../slice/appSlice';
 
 export default function Files({projID}) {
     const ref = useRef();
@@ -10,6 +10,7 @@ export default function Files({projID}) {
     const dispatch = useDispatch();
     
     const addClick = () => ref.current.click();
+    const openImage = (fileID) => dispatch(toggleImage({projID, fileID, imageState:true}));
     
     const addNewFile = () => {
         let newFile;
@@ -19,6 +20,7 @@ export default function Files({projID}) {
         reader.onload = () => {
             newFile = {
                 id: uuid(),
+                active: false,
                 name: file.name,
                 image: reader.result 
             };
@@ -33,7 +35,14 @@ export default function Files({projID}) {
             <h3 className={s.files_title}>Вложенные файлы</h3>
             <div className={s.files_block}>
                 {files.map(file => (file &&
-                    <div className={s.files_cont} key={file.id}><img  alt='someimage' src={file.image} className={s.files_image}/></div>
+                    <div className={s.files_cont} key={file.id}>
+                        <img  
+                            alt='someimage' 
+                            src={file.image} 
+                            className={s.files_image}
+                            onClick={() => openImage(file.id)}
+                        />
+                    </div>
                 ))}
             </div>
             <input className={s.files_input}

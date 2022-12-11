@@ -20,7 +20,6 @@ export default function TodosList({title}) {
     const[, drop] = useDrop(() => ({
         accept: ItemTypes.TODO,
         drop: (item) => setNewStatus(item),
-        // drop: (item) => dispatch(changeTodoStatus({projectID:id, todoID:item.id, title}))
     })); 
 
     

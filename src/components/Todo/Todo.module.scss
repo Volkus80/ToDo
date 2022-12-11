@@ -106,6 +106,7 @@ $colorDone: rgba(50, 179, 11, 0.884);
         &_text {
             min-width: 100px;
             border-bottom: solid black 2px;
+            cursor: pointer;
             @media (max-width: 650px) {
                 align-items: center;
                 padding-left: 0;
@@ -132,9 +133,11 @@ $colorDone: rgba(50, 179, 11, 0.884);
         display: flex;
         margin-left: 10px;
         &_title {
-            font-weight: 700;        }
+            font-weight: 700; 
+        }
         &_text {
             padding-left: 16px;
+            cursor: pointer;
         }
        
         &_container {
@@ -176,6 +179,7 @@ $colorDone: rgba(50, 179, 11, 0.884);
         }
         &_text {
             padding-left: 16px;
+            cursor: pointer;
         }
        
         &_container {
@@ -249,6 +253,7 @@ $colorDone: rgba(50, 179, 11, 0.884);
         padding: 10px;
         font-size: .9rem;
         border-radius: 5px;
+        cursor: pointer;
     }
 }
 .subtasks {
@@ -295,6 +300,7 @@ $colorDone: rgba(50, 179, 11, 0.884);
         width: 100%;
         height: 100%;
         object-fit:contain;
+        cursor: pointer;
     }
 }
 
@@ -324,6 +330,9 @@ $colorDone: rgba(50, 179, 11, 0.884);
         transition: ease .3s;
         &:active {
             transform: translateY(3px);
+        }
+        &:hover {
+            transform: scale(1.05);
         }
     }
 }

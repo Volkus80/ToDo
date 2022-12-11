@@ -13,6 +13,7 @@ import SubTasks from './SubTasks';
 import SubTaskCreateForm from './SubTask/SubTaskCreateForm';
 import Comments from './Comments/Comments';
 import Files from './Files';
+import ShowImageItem from './ShowImageItem';
 
 const cx = classNames.bind(s);
 
@@ -72,6 +73,7 @@ export default function Todo() {
                 }
                 return item;
             })}
+            {todo.files.length > 0 ? <ShowImageItem projID={id} todoID={todo.id}/> : <div/>}
         </div>)
     )
 }

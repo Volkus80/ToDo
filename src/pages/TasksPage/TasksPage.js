@@ -25,7 +25,7 @@ export default function TasksPage() {
         const newTodo = {
             id: uuid(),
             number: getLastNumber(),
-            title: '',
+            title: 'Введите наименование',
             description: '',
             createDate: new Date().toLocaleDateString(),
             active: true,
