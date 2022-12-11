@@ -1,15 +1,44 @@
+$colorQueue: rgb(235, 63, 63);
+$colorDevelopment: rgb(217, 219, 94);
+$colorDone: rgb(50, 179, 11);
+
+@keyframes scale {
+    from {
+        width: inherit;
+    }
+    to {
+        width: 100%;
+    }
+}
+
 .container {
     display: flex;
+    min-height: 100px;
     flex-direction: column;
-    align-items:center;
-    justify-content: space-around;
-    width: 25%;
-    border: solid 2px rgb(108, 88, 224);
+    justify-content: center;
+    min-width: 250px;
+    border: solid 2px $colorDone;
     border-radius: 1rem;
-    box-shadow: 5px 5px 2px 2px lightgray;
     overflow: hidden;
+    background-color: rgba(255, 255, 255, 0.308);
+    transform: ease 1s;
+    margin-bottom: 10px;
+    @media (max-width: 650px) {
+        margin-bottom: 10px;        
+    }
+    @media (max-width: 570px) {
+        animation: scale 0.5s linear;
+        animation-fill-mode: forwards;
+    }
+    &.queue {
+        border-color: $colorQueue;
+    };
+    &.development {
+        border-color: $colorDevelopment;
+    }
 }
 .wrapper {
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items:center;
@@ -23,27 +52,43 @@
     font-style: italic;
     font-weight: bold;
     color: whitesmoke;
-    background-color:rgb(108, 88, 224);
+    background-color: $colorDone;
     padding: 5px 10px;
     justify-self: flex-start;
     margin-bottom: 1rem;
+    &.queue {
+        background-color: $colorQueue;
+    };
+    &.development {
+        background-color: $colorDevelopment;
+    }
 }
 
 .todosItem {
     display: flex;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 0 2px 2px grey;
     align-items: center;
     justify-content: center;
-    margin-bottom: 1rem;
-    border-bottom: solid 2px grey;
+    margin-bottom: 10px;
+    width: 90%;
+    padding: 10px;
+}
+
+.dr {
+    opacity: .5;
 }
 
 .text {
     font-size: 1.5rem;
     text-align: center;
     margin-right: 10px;  
-    cursor:grab;  
+    cursor:grab; 
+    color: grey; 
 }
 span {
     font-size: 1.5rem; 
     cursor: pointer;
+    color: grey;
 }

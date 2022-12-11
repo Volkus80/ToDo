@@ -1,7 +1,62 @@
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    background-image: url('../../image/mainback.jpg');
+    background-position:center;
+    background-size: cover;
+}
+
+.todoListcontainer {
+    // flex: 1 auto;
     margin: 0 auto;
     padding-top: 1rem;
     width: 90%;
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    @media (max-width: 570px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
+    padding-top: 20px;
+    @media (max-width: 600px) {
+        flex-direction: column;        
+    }
+}
+.nav {
+    display: flex;
+    align-items: center;
+    @media (max-width: 600px) {
+        margin-bottom: 10px;        
+    }
+    &_link {
+        padding: 10px;
+        font-size: 1rem;
+        color: white;
+        text-decoration: none;
+        background-color: lightgrey;
+        border: solid white 2px;
+        border-radius: 5px;
+        margin-right: 20px;
+        
+    }
+    &_button {
+        color: white;
+        padding: 10px;
+        background: lightgrey;
+        border: solid white 2px;
+        border-radius:5px;
+        outline: none;
+        font-size: 1rem;
+        cursor: pointer;
+    }
+}
+    

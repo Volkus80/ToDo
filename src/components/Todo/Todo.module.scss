@@ -1,0 +1,329 @@
+$colorQueue: rgb(235, 63, 63);
+$colorDevelopment: rgb(217, 219, 94);
+$colorDone: rgba(50, 179, 11, 0.884);
+%block {
+    display: flex;
+    border-radius: 10px;
+    box-shadow: 2px 2px 2px 2px grey;
+    border: solud grey 1px;
+    flex-wrap: wrap;
+    margin-bottom: 10px;
+    padding: 10px;
+    flex: 1 1;
+}
+%button {
+    border: solid grey 1px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    font-size: 1rem;
+    align-self: flex-start;
+    background: radial-gradient(rgb(17, 218, 17), rgb(175, 238, 175));
+    transition: ease .3s;
+    &:hover {
+        background: radial-gradient(rgb(58, 211, 58), rgb(117, 156, 117));
+    }
+    &:active {
+        transform: translateY(3px);
+    }
+}
+%title {
+    color: grey;
+    font-style: italic;
+    margin-bottom: 10px;
+}
+.container {
+    padding: 10px;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    &.hidden {
+        display: none;
+    }
+}
+
+.wrapper{
+    width: 95%;
+    max-height: 100%;
+    position: relative;
+    padding: 1rem;
+    background-color: white;
+    overflow-y: scroll;
+    border: solid 2px grey;
+}
+
+.task {
+    @extend %block;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 10px;
+    background-color: lightgrey;
+    font-size: 1.2rem;
+    align-items: center;
+    justify-items: start;
+    @media (max-width: 650px) {
+        display: flex;
+        flex-direction: column;
+        align-items:center;
+    }
+    
+    &_number {
+        font-style: italic;
+        text-decoration: underline;
+        margin-left: 10px;
+    }
+    &_title {
+        display: flex;
+        font-weight: 700;
+        margin-left: 10px;
+        cursor: pointer;
+        @media (max-width: 650px) {
+            display: flex;
+            align-items:center;
+            justify-content: center;
+        }
+        &_input {
+            background: transparent;
+            font-size: 1.2rem;  
+            flex: 1 auto;
+            @media (max-width: 650px) {
+                align-items: center;
+                padding-left: 0;
+                text-align: center;
+            }
+            @media (max-width: 400px) {
+                width: 150px;
+            }           
+        }
+        &_text {
+            min-width: 100px;
+            border-bottom: solid black 2px;
+            @media (max-width: 650px) {
+                align-items: center;
+                padding-left: 0;
+                text-align: center;
+            } 
+        }
+        &_button {
+            display: flex;
+            justify-self: center;
+            align-self:center;
+            justify-content: flex-start;
+            &_save {
+                @extend %button;
+                padding: 0 5px;
+        
+            }
+        }  
+        @media (max-width: 350px) {
+            align-items: center;
+            padding-left: 0;
+        }        
+    }
+    &_importance {
+        display: flex;
+        margin-left: 10px;
+        &_title {
+            font-weight: 700;        }
+        &_text {
+            padding-left: 16px;
+        }
+       
+        &_container {
+            display: grid;
+            grid-template-columns: 1fr 25px;
+            align-self:flex-start;
+        }
+        &_select {
+            font-size: 1.2rem;
+            padding: 0 15px 0 5px;
+            appearance: none;
+            background-color: transparent;
+            background-image: url('../../image/cheveron-down.png');
+            background-position:right center;
+            background-repeat: no-repeat;
+            width: 120px;
+            margin-left: 10px;;
+        }
+        &_button {
+            display: flex;
+            justify-content: flex-start;
+            &_save {
+                @extend %button;
+                padding: 0 5px;
+        
+            }
+        }
+        @media (max-width: 350px) {
+            flex-direction: column;
+            text-align: center;
+            padding-left: 0;
+        }
+    }
+    &_status {
+        display: flex;
+        margin-left: 10px;
+        &_title {
+            font-weight: 700;
+        }
+        &_text {
+            padding-left: 16px;
+        }
+       
+        &_container {
+            display: grid;
+            grid-template-columns: 1fr 25px;
+            align-self:flex-start;
+        }
+        &_select {
+            font-size: 1.2rem;
+            padding: 0 15px 0 5px;
+            appearance: none;
+            background-color: transparent;
+            background-image: url('../../image/cheveron-down.png');
+            background-position:right center;
+            background-repeat: no-repeat;
+            margin-left: 10px;
+        }
+        &_button {
+            display: flex;
+            justify-content: flex-start;
+            &_save {
+                @extend %button;
+                padding: 0 5px;
+        
+            }
+        }
+        @media (max-width: 350px) {
+            flex-direction: column;
+            text-align: center;
+            padding-left: 0;
+        }
+    }
+    
+
+}
+.time {
+    @extend %block;
+    color: grey;
+    justify-content: space-around;
+    &>* {
+        margin-left: 10px;
+        @media (max-width: 650px) {
+            margin-bottom: 10px;
+        }
+    }
+}
+.description {
+    @extend %block;
+    flex-direction: column;
+    &_title {
+        @extend %title;
+    }
+    &_input {
+        resize:none;
+        border: none;
+        outline: none;
+        border-radius: 5px;
+        padding: 10px;
+        font-size: .9rem;
+
+    }
+    &_button {
+        display: flex;
+        &_save {
+            @extend %button;
+            padding: 0 5px;
+        }
+    }
+    &_text {
+        background-color: lightgray;
+        padding: 10px;
+        font-size: .9rem;
+        border-radius: 5px;
+    }
+}
+.subtasks {
+    @extend %block;
+    flex-direction: column;
+    &_add {
+        @extend %button;
+    }
+    &_block {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+}
+.files {
+    @extend %block;
+    flex-direction: column;
+    &_title {
+        @extend %title;
+    }
+    &_input {
+        width: 0;
+        height: 0;
+        margin: 0;
+        padding: 0;
+        opacity:0;
+        line-height: 0;
+        overflow: hidden;
+    }
+    &_add {
+        @extend %button;
+    }
+    &_block {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-auto-rows: minmax(50px, auto);
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+    &_cont {
+        width: 100%;
+    }
+    &_image {
+        width: 100%;
+        height: 100%;
+        object-fit:contain;
+    }
+}
+
+.close {
+    display: flex;
+    flex-direction:column;
+    width: 95%;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    background-color: lightgrey;
+    border: solid 2px grey;
+    border-bottom: none;
+    justify-content: center;
+    &_button {
+        align-self: flex-end;
+        justify-self: center;
+        width: 25px;
+        height: 25px;
+        background: none;
+        border: solid white 2px;
+        border-radius: 50%;
+        display: flex;
+        align-items:center;
+        justify-content: center;
+        color: white;
+        cursor: pointer;
+        transition: ease .3s;
+        &:active {
+            transform: translateY(3px);
+        }
+    }
+}

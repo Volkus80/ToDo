@@ -1,18 +1,61 @@
 import { Link, useParams } from "react-router-dom";
-import { useSelector } from "react-redux";
+import uuid from "react-uuid";
+import { useDispatch, useSelector } from "react-redux";
+import {addTodo} from '../../slice/appSlice';
+import { showTodo } from "../../slice/todoSlice";
 import TodosList from "../../components/TodosList/TodosList";
+import SearchBar from "../../components/SearchBar/SearchBar";
 import s from './TaskPage.module.scss';
+import Todo from "../../components/Todo/Todo";
+
+
+
+const todoStates = ['Queue', 'Development', 'Done'];
 
 export default function TasksPage() {
     const {id} = useParams();
-    const data = useSelector(state => state.data);
-    const project = data.find(elem => elem.id === id);
+    const dispatch = useDispatch();
+    const todos = useSelector(state => state.data.find(proj => proj.id === id)).todos; 
+    const getLastNumber = () => {
+        const numbers = todos.map(todo => +todo.number);
+        const lastNumber = Math.max(...numbers);
+        return String(lastNumber+1);
+    };
+    const addNewTodo = () => {
+        const newTodo = {
+            id: uuid(),
+            number: getLastNumber(),
+            title: '',
+            description: '',
+            createDate: new Date().toLocaleDateString(),
+            active: true,
+            finishDate: '',
+            importance: 'низкий',
+            files: [],
+            status: 'Queue',
+            todos: [],
+            comments: []
+        };
+        dispatch(addTodo({projID: id, todo: newTodo}));
+        dispatch(showTodo());
+    };
 
     return (
         <div className={s.container}>
-            <TodosList id={id} title='Queue'/>
-            <TodosList id={id} title='Development'/>
-            <TodosList id={id} title='Done'/>
+            <header className={s.header}>
+                <div className={s.nav}>
+                    <Link to='/' className={s.nav_link}>Проекты</Link>
+                    <button 
+                        className={s.nav_button}
+                        onClick={addNewTodo}
+                    >Добавить задачу</button>
+                </div>
+                <SearchBar />
+            </header>
+            <div className={s.todoListcontainer}>
+                {todoStates.map((state, index) => (<TodosList key={index} title={state}/>))}
+            </div>
+            <Todo />                
         </div>
     )
 }

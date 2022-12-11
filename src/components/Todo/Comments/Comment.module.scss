@@ -1,0 +1,100 @@
+%button {
+    border: solid grey 1px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    padding: 5px;
+    color: white;
+    font-size: 1rem;
+    align-self: flex-start;
+    background: radial-gradient(rgb(17, 218, 17), rgb(175, 238, 175));
+    transition: ease .3s;
+    &:hover {
+        background: radial-gradient(rgb(58, 211, 58), rgb(117, 156, 117));
+    }
+    &:active {
+        transform: translateY(3px);
+    }
+}
+
+.comment {
+    display: flex;
+    flex-direction: column;
+    padding-left: 10px;
+    &_body {
+        display: flex;
+        flex-direction: column;
+    }
+    &_text {
+        color: grey;
+        font-style: italic;
+        margin-bottom: 10px;
+        hyphens: auto;
+        line-break: normal;
+    }
+    &_add {
+        display: flex;
+        flex-direction: column;
+        &_open {
+            border: none;
+            border-bottom:dashed 2px green;
+            background: none;
+            outline: none;
+            cursor: pointer;
+            color: green;
+            font-size: 1rem;
+            align-self:flex-start;
+            margin-bottom: 10px;
+        }
+        &_form {
+            display: flex;
+            flex-direction: column;
+            border: solid grey 1px;
+            margin-bottom: 10px;
+            &_input {
+                padding: 5px 10px;
+                width: 100%;
+                border: none;
+                border-bottom: solid grey 1px;
+                outline: none;
+                resize: none;
+                font-style: italic;
+                color: grey;
+                margin-bottom: 10px;
+            }
+        }
+        &_buttons {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+        }
+        &_button {
+            @extend %button;
+        }
+
+    }
+    &_toggle {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+        margin-bottom: 10px;
+        &_icon {
+            @extend %button;
+            height: 20px;
+            width: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
+            margin-right: 10px;
+        }
+    }
+}
+.hidden {
+    display: none;
+}
+.styled{
+    border-left: solid rgba(128, 128, 128, 0.829) 1px;
+    padding-left: 10px;
+    margin-bottom: 10px;
+}
