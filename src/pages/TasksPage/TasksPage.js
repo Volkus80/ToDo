@@ -40,7 +40,7 @@ export default function TasksPage() {
         dispatch(showTodo());
     };
 
-    return (
+    return todos && (
         <div className={s.container}>
             <header className={s.header}>
                 <div className={s.nav}>
