@@ -45,7 +45,7 @@ export default function TasksPage() {
         dispatch(showTodo());
     };
 
-    return todos && (
+    return data ? (
         <div className={s.container}>
             <header className={s.header}>
                 <div className={s.nav}>
@@ -62,5 +62,5 @@ export default function TasksPage() {
             </div>
             <Todo />                
         </div>
-    )
+    ) : 'ни хрена не грузится'
 }
