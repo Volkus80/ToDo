@@ -7,8 +7,8 @@ import {useSelector} from 'react-redux';
 
 
 function App() {
-  // const data = JSON.stringify(useSelector(state => state.data));
-  // localStorage.setItem('todoData', data);
+  const data = JSON.stringify(useSelector(state => state.data));
+  localStorage.setItem('todoData', data);
    
   return (
     <Routes>

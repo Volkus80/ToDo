@@ -51,7 +51,7 @@ export default function TodosList({title}) {
         <div className={contStyle}>
             <h3 className={titleStyle}>{title}</h3>
             <div className={s.wrapper} ref={drop}>
-                {proj['todos'].filter(todo => todo.title.toLowerCase().includes(searchParam)  || todo.number.includes(searchParam)).map(function(todo) {
+                {proj.todos.filter(todo => todo.title.toLowerCase().includes(searchParam)  || todo.number.includes(searchParam)).map(function(todo) {
                     let item;
                     if (todo.status === title) {
                         item = (
