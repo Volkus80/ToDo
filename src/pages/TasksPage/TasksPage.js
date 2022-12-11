@@ -9,18 +9,16 @@ import SearchBar from "../../components/SearchBar/SearchBar";
 import s from './TaskPage.module.scss';
 import Todo from "../../components/Todo/Todo";
 
-
-
 const todoStates = ['Queue', 'Development', 'Done'];
 
 export default function TasksPage() {
     const {id} = useParams();
     const dispatch = useDispatch();
-    const todos = useSelector(state => state.data.find(proj => proj.id === id).todos);
+    const proj = useSelector(state => state.data.find(proj => proj.id === id));
 
     const getLastNumber = () => {
-        if (todos.length > 0) {
-            const numbers = todos.map(todo => +todo.number);
+        if (proj.todos.length > 0) {
+            const numbers = proj.todos.map(todo => +todo.number);
             const lastNumber = Math.max(...numbers);
             return String(lastNumber+1);
         }
