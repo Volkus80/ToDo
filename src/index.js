@@ -13,13 +13,13 @@ const root = createRoot(container);
 
 root.render(
   <React.StrictMode>
-    <DndProvider backend={HTML5Backend} >
-      <Provider store={store}>
+    <Provider store={store}>
+      <DndProvider backend={HTML5Backend} >
         <BrowserRouter>
           <App />
         </BrowserRouter>
-      </Provider>
-    </DndProvider>
+      </DndProvider>
+    </Provider>
   </React.StrictMode>
 );
 
