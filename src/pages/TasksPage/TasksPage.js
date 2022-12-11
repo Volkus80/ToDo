@@ -1,7 +1,6 @@
 import { Link, useParams } from "react-router-dom";
 import uuid from "react-uuid";
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
 import {addTodo} from '../../slice/appSlice';
 import { showTodo } from "../../slice/todoSlice";
 import TodosList from "../../components/TodosList/TodosList";
@@ -14,12 +13,13 @@ const todoStates = ['Queue', 'Development', 'Done'];
 export default function TasksPage() {
     const {id} = useParams();
     const dispatch = useDispatch();
-    const proj = useSelector(state => state.data.find(proj => proj.id === id));
-    console.log('Taskpage:', proj);
+    const data = useSelector(state => state.data);
+    const todos = data.find(proj => proj.id === id).todos;
+    console.log('Taskpage:', data);
 
     const getLastNumber = () => {
-        if (proj.todos.length > 0) {
-            const numbers = proj.todos.map(todo => +todo.number);
+        if (todos.length > 0) {
+            const numbers = todos.map(todo => +todo.number);
             const lastNumber = Math.max(...numbers);
             return String(lastNumber+1);
         }
@@ -45,7 +45,7 @@ export default function TasksPage() {
         dispatch(showTodo());
     };
 
-    return proj && (
+    return todos && (
         <div className={s.container}>
             <header className={s.header}>
                 <div className={s.nav}>
