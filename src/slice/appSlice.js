@@ -166,7 +166,7 @@ const initialData = JSON.parse(localStorage.getItem('todoData'));
 
 export const appSlice = createSlice({
     name: 'data',
-    initialState: initialData || data,
+    initialState: /*initialData ||*/ data,
     reducers: {
        addTodo(state, action){
         const {projID, todo} = action.payload;

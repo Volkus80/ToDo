@@ -7,8 +7,15 @@ import {useSelector} from 'react-redux';
 
 
 function App() {
-  const data = JSON.stringify(useSelector(state => state.data));
-  localStorage.setItem('todoData', data);
+  // const data = JSON.stringify(useSelector(state => state.data));
+  // localStorage.setItem('todoData', data);
+  // const selector = useSelector();
+  // const data  = async() => {
+  //   const res = await selector(state => state.data);
+  //   localStorage.setItem('todoData', res);
+  // };
+  // data();
+   
   return (
     <Routes>
       <Route path='/' element={<ProjectsPage/>} />
