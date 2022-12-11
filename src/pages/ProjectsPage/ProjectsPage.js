@@ -5,6 +5,7 @@ import s from './ProjectPage.module.scss';
 
 export default function ProjectsPage() {
     const data = useSelector(state => state.data);
+    console.log('Proj:', data);
 
     const projects = data.map(project => (
         <Link to={`/${project.id}`} id={project.id} key={project.id} className={s.link}>
@@ -12,7 +13,7 @@ export default function ProjectsPage() {
         </Link>
     ))
 
-    return(
+    return data && (
         <div className={s.container}>
            {projects}     
         </div>

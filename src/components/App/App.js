@@ -9,6 +9,7 @@ import {useSelector} from 'react-redux';
 function App() {
   const data = JSON.stringify(useSelector(state => state.data));
   useEffect(() => localStorage.setItem('todoData', data),[data]);
+  console.log('App:', data);
    
   return (
     <Routes>
