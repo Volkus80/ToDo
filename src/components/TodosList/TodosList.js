@@ -11,7 +11,7 @@ import { showTodo } from "../../slice/todoSlice";
 export default function TodosList({title}) {
     const {id} = useParams();
     const dispatch = useDispatch();
-    const todos = useSelector(state => state.data.find(project => project.id === id).todos);
+    const proj = useSelector(state => state.data.find(project => project.id === id));
     const searchParam = useSelector(state => state.search);
     const setNewStatus = (item) => {
         const date = title === 'Done' ? new Date().toLocaleDateString() : '';
@@ -51,7 +51,7 @@ export default function TodosList({title}) {
         <div className={contStyle}>
             <h3 className={titleStyle}>{title}</h3>
             <div className={s.wrapper} ref={drop}>
-                {todos.filter(todo => todo.title.toLowerCase().includes(searchParam)  || todo.number.includes(searchParam)).map(function(todo) {
+                {proj.todos.filter(todo => todo.title.toLowerCase().includes(searchParam)  || todo.number.includes(searchParam)).map(function(todo) {
                     let item;
                     if (todo.status === title) {
                         item = (
