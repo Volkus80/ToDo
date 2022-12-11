@@ -13,9 +13,9 @@ export default function ProjectsPage() {
         </Link>
     ))
 
-    return data && (
+    return  (
         <div className={s.container}>
-           {projects}     
+           {projects} || {`${data}`}     
         </div>
     )
 }
