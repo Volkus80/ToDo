@@ -23,6 +23,7 @@ export default function Comments({projID}) {
         
         dispatch(addComment({id: projID, comment: newComment}));
         }
+        ref.current.value='';
     };
 
     const baseComments = comments.map(comment => {

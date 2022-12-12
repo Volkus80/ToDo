@@ -43,6 +43,7 @@ export default function Comment({comments, id, projID}) {
         dispatch(addComment({id: projID, comment: newComment}));
         setShowForm(false);
         setShowComments(true);
+        ref.current.value='';
     }
 
     useEffect(() => {

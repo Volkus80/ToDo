@@ -15,7 +15,6 @@ export default function TasksPage() {
     const dispatch = useDispatch();
     const data = useSelector(state => state.data);
     const todos = data.find(proj => proj.id === id).todos;
-    console.log('Taskpage:', data);
 
     const getLastNumber = () => {
         if (todos.length > 0) {
@@ -45,7 +44,7 @@ export default function TasksPage() {
         dispatch(showTodo());
     };
 
-    return data ? (
+    return (
         <div className={s.container}>
             <header className={s.header}>
                 <div className={s.nav}>
@@ -62,5 +61,5 @@ export default function TasksPage() {
             </div>
             <Todo />                
         </div>
-    ) : 'ни хрена не грузится'
+    ) 
 }
