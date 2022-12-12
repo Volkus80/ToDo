@@ -14,7 +14,7 @@ export default function ProjectsPage() {
 
     return  (
         <div className={s.container}>
-           {projects} || {`${data}`}     
+           {projects}     
         </div>
     )
 }
